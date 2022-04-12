@@ -1,0 +1,127 @@
+<!DOCKTYPE html>
+<html lang="en">
+    <head>
+        <title>Лабораторна робота №12</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
+    </head>
+    <body>
+        <div class="container">
+            <h1>List of name</h1>
+            <form method="POST" name="sample">
+                <br>
+                Nom: <input type="number" name="id">
+                Name: <input type="text" name="name">
+                Cost: <input type="number" name="cost">
+                Time1: <input type="date" name="tm1">
+                Time2: <input type="date" name="tm2">
+                <br><br>
+                <input type="button" name="add" value="Add" onclick="addData();" class="btn btn-success"><hr>
+
+                <table id="tb1" class="table">
+                    <thead>
+                        <tr>
+                            <th>Number</th> 
+                            <th>Name</th>
+                            <th>Cost</th>
+                            <th>Time1</th>
+                            <th>Time2</th>
+                        </tr>
+                        </thead>
+                        </table>
+                        <input type="submit" value="Save" name="sv" formaction="sv.php" class="btn btn-info">
+                        </form>
+                        <script type="text/javascript">
+                            function addData(){
+                                var id = document.sample.id.value;
+                                var name = document.sample.name.value;
+                                var cost = document.sample.cost.value;
+                                var tm1 = document.sample.tm1.value;
+                                var tm2 = document.sample.tm2.value;
+
+                                var tr = document.createElement('tr');
+
+                                var td1 = tr.appendChild(document.createElement('td'));
+                                var td2 = tr.appendChild(document.createElement('td'));
+                                var td3 = tr.appendChild(document.createElement('td'));
+                                var td4 = tr.appendChild(document.createElement('td'));
+                                var td5 = tr.appendChild(document.createElement('td'));
+                                var td7 = tr.appendChild(document.createElement('td'));
+                                var td8 = tr.appendChild(document.createElement('td'));
+
+                                td1.innerHTML = '<input type="hidden" name="id[]" value="'+id+'">'+id;
+                                td2.innerHTML = '<input type="hidden" name="name[]" value="'+name+'">'+name;
+                                td3.innerHTML = '<input type="hidden" name="cost[]" value="'+cost+'">'+cost;
+                                td4.innerHTML = '<input type="hidden" name="tm1[]" value="'+tm1+'">'+tm1;
+                                td5.innerHTML = '<input type="hidden" name="tm2[]" value="'+tm2+'">'+tm2;
+                                td7.innerHTML = '<input type="button" name="del" value="DELETE" onClick="delData(this);" class="btn btn-danger">';
+                                td8.innerHTML = '<input type="button" name="up" value="UPDATE" onClick="upData(this);" class="btn btn-primary">';
+
+
+                                document.getElementById("tb1").appendChild(tr);
+
+                            }
+                            function upData(dat){
+                                var id = document.sample.id.value;
+                                var name = document.sample.name.value;
+                                var cost = document.sample.cost.value;
+                                var tm1 = document.sample.tm1.value;
+                                var tm2 = document.sample.tm2.value;
+                                var d = dat.parentNode.parentNode;
+                                var tr = document.createElement('tr');
+
+                                var td1 = tr.appendChild(document.createElement('td'));
+                                var td2 = tr.appendChild(document.createElement('td'));
+                                var td3 = tr.appendChild(document.createElement('td'));
+                                var td4 = tr.appendChild(document.createElement('td'));
+                                var td5 = tr.appendChild(document.createElement('td'));
+                                var td7 = tr.appendChild(document.createElement('td'));
+                                var td8 = tr.appendChild(document.createElement('td'));
+
+                                td1.innerHTML = '<input type="number" name="id1">';
+                                td2.innerHTML = '<input type="text" name="name1">';
+                                td3.innerHTML = '<input type="number" name="cost1">';
+                                td4.innerHTML = '<input type="date" name="tm11">';
+                                td5.innerHTML = '<input type="date" name="tm21">';
+                                td7.innerHTML = '<input type="button" name="del" value="DELETE" onClick="delData(this);" class="btn btn-danger">';
+                                td8.innerHTML = '<input type="button" name="up" value="UPDATE" onClick="addupData(this);" class="btn btn-primary">';
+
+
+                                document.getElementById("tb1").replaceChild(tr, d);
+                            }
+                            function addupData(dat){
+                                var id = document.sample.id1.value;
+                                var name = document.sample.name1.value;
+                                var cost = document.sample.cost1.value;
+                                var tm1 = document.sample.tm11.value;
+                                var tm2 = document.sample.tm21.value;
+                                var d = dat.parentNode.parentNode;
+                                var tr = document.createElement('tr');
+
+                                var td1 = tr.appendChild(document.createElement('td'));
+                                var td2 = tr.appendChild(document.createElement('td'));
+                                var td3 = tr.appendChild(document.createElement('td'));
+                                var td4 = tr.appendChild(document.createElement('td'));
+                                var td5 = tr.appendChild(document.createElement('td'));
+                                var td7 = tr.appendChild(document.createElement('td'));
+                                var td8 = tr.appendChild(document.createElement('td'));
+
+                                td1.innerHTML = id1;
+                                td2.innerHTML = name1;
+                                td3.innerHTML = cost1;
+                                td4.innerHTML = tm11;
+                                td5.innerHTML = tm21;
+                                td7.innerHTML = '<input type="button" name="del" value="DELETE" onClick="delData(this);" class="btn btn-danger">';
+                                td8.innerHTML = '<input type="button" name="up" value="UPDATE" onClick="addupData(this);" class="btn btn-primary">';
+
+
+                                document.getElementById("tb1").replaceChild(tr, d);
+                            }
+                            function delData(Dat){
+                                var d = Dat.parentNode.parentNode;
+                                d.parentNode.removeChild(d);
+                            }
+                            </script>
+                            
+        </body>
+    </html>
